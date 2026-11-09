@@ -1,259 +1,289 @@
-# OpenEMR Automation — BDD Cucumber Test Framework
+<div align="center">
 
-![Java](https://img.shields.io/badge/Java-8+-orange?logo=java)
-![Selenium](https://img.shields.io/badge/Selenium-WebDriver-43B02A?logo=selenium)
-![Cucumber](https://img.shields.io/badge/Cucumber-BDD-brightgreen?logo=cucumber)
-![TestNG](https://img.shields.io/badge/TestNG-Runner-red)
-![Maven](https://img.shields.io/badge/Maven-Build-C71A36?logo=apache-maven)
-![License](https://img.shields.io/badge/License-Educational-lightgrey)
+# 🏥 OpenEMR Automation
 
-**Author:** Ranajit Baran Chowdhury — QA Automation Engineer
-**Email:** chyranajit@gmail.com
-**GitHub:** [@ranajitchowdhury](https://github.com/ranajitchowdhury)
+### BDD UI test framework for the OpenEMR electronic medical record system
 
-A production-grade UI automation framework for testing the **OpenEMR** electronic medical record system using **Behavior-Driven Development (BDD)** principles. This project demonstrates industry-best practices in test automation architecture and healthcare application quality assurance.
+[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=18&pause=1500&color=FFC107&center=true&vCenter=true&width=900&repeat=true&lines=Java+%C2%B7+Selenium+4+%C2%B7+Cucumber+7+%C2%B7+TestNG+%C2%B7+Maven;Healthcare+QA%3A+login%2C+patient+registration%2C+form+validation%2C+logout;5+%2F+5+scenarios+passing+on+demo.openemr.io)](https://git.io/typing-svg)
 
-🌐 **Live Application:** [demo.openemr.io](http://demo.openemr.io/b/openemr/interface/login/login.php)
+<!-- ============ STATUS BAR ============ -->
+![Status](https://img.shields.io/badge/Status-Stable-0d9488?style=for-the-badge&logo=checkmarx&logoColor=white)
+![Pass Rate](https://img.shields.io/badge/Pass%20Rate-100%25%20(5%2F5)-22c55e?style=for-the-badge)
+![Domain](https://img.shields.io/badge/Domain-Healthcare%20%C2%B7%20EMR-155e75?style=for-the-badge)
+![Target](https://img.shields.io/badge/Target-demo.openemr.io-1e3a8a?style=for-the-badge&logo=googlechrome&logoColor=white)
+
+![Java](https://img.shields.io/badge/Java-11%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.18.1-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Cucumber](https://img.shields.io/badge/Cucumber-7.15.0-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
+![TestNG](https://img.shields.io/badge/TestNG-7.9.0-FF7F00?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+
+![Last Commit](https://img.shields.io/github/last-commit/rbchy/OpenEMR_Automation?style=flat-square&color=0d9488&label=Last%20commit)
+![Repo Size](https://img.shields.io/github/repo-size/rbchy/OpenEMR_Automation?style=flat-square&color=155e75&label=Repo%20size)
+![Top Language](https://img.shields.io/github/languages/top/rbchy/OpenEMR_Automation?style=flat-square&color=f59e0b)
+
+</div>
 
 ---
 
-## 🛠️ Technology Stack
+## 📌 At a Glance
 
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| **Language** | Java 8+ | Core programming language |
-| **Automation** | Selenium WebDriver | Browser interaction & UI control |
-| **BDD Framework** | Cucumber (Gherkin) | Human-readable test scenarios |
-| **Test Runner** | TestNG | Test execution & reporting |
-| **Build Tool** | Maven | Dependency management & builds |
-| **IDE** | Eclipse / IntelliJ IDEA | Development environment |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🙋 What this is**
+
+A UI automation framework that tests **[OpenEMR](https://www.open-emr.org/)**, the open-source electronic medical record and practice management system, through its public demo. Scenarios are written in plain-English **Gherkin**, backed by **Page Object** classes and run by **TestNG** through Maven, with a screenshot attached to the report whenever a scenario fails.
+
+> *Healthcare software has no room for a silent failure: if a patient cannot be registered, the test must say so.*
+
+</td>
+<td width="50%" valign="top">
+
+**📍 Quick facts**
+
+| | |
+|---|---|
+| 🎯 **Application** | [demo.openemr.io](https://demo.openemr.io/openemr/interface/login/login.php) |
+| 🧪 **Scenarios** | 5 (3 `@smoke` · 2 `@regression`) |
+| ✅ **Latest run** | 5 / 5 passed · 2 m 22 s |
+| 💻 **Run on** | macOS · OpenJDK 21 · Chrome |
+| 📄 **Report** | [Cucumber HTML report (PDF)](OpenEMR%20Cucumber%20Test%20Report.pdf) |
+
+</td>
+</tr>
+</table>
+
+---
+
+## ✅ Latest Results
+
+| Feature | Scenario | Tag | Result |
+|---|---|---|---|
+| 🔐 OpenEMR Login | Successful login (admin user, English language) | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
+| 🔐 OpenEMR Login (`openemr.feature`) | Successful login | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
+| 👤 Patient Management | Add new patient successfully | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
+| 👤 Patient Management | Add patient with missing mandatory fields → *"First Name is required"* | `@regression` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
+| ⚙️ OpenEMR Admin Actions | Logout successfully | `@regression` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
+
+<sub>Source: the Cucumber report in this repository (cucumber-jvm 7.15.0, OpenJDK 21.0.7, macOS). The demo site is shared and reset regularly, so results depend on its availability.</sub>
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Version | Purpose |
+|---|---|---|---|
+| Language | Java | 11 (runs on 11–21) | Test code |
+| Browser automation | Selenium WebDriver | 4.18.1 | Drives Chrome |
+| Driver management | WebDriverManager | 5.8.0 | Downloads the matching ChromeDriver automatically |
+| BDD | Cucumber JVM (Gherkin) | 7.15.0 | Readable Given / When / Then scenarios |
+| Test runner | TestNG + `cucumber-testng` | 7.9.0 | Runs features, tag-based suites |
+| Build | Maven (Surefire 3.2.5) | — | Dependencies and test execution |
+| Reporting | Cucumber HTML / JSON / JUnit XML | — | `target/` reports, failure screenshots |
+| IDE | Eclipse / IntelliJ IDEA | — | Development |
+
+---
+
+## 🏗️ Framework Architecture
+
+```mermaid
+flowchart LR
+  F["Feature files<br/>(Gherkin)"] --> S["Step definitions<br/>stepdefinitions/"]
+  S --> P["Page Objects<br/>pages/"]
+  P --> W["Selenium WebDriver<br/>+ WebDriverManager"]
+  W --> C["Chrome"]
+  C --> O["OpenEMR<br/>demo.openemr.io"]
+  H["Hooks<br/>@Before / @After"] -.->|"start browser ·<br/>screenshot on failure · quit"| W
+  R["Runners<br/>TestRunner · Smoke · Regression · Sanity"] --> F
+```
+
+**Design patterns applied**
+
+- **Page Object Model** — each screen (Login, Patient, Admin, Insurance) keeps its own locators and actions
+- **BDD with Cucumber** — scenarios read as plain English for testers, developers and clinical stakeholders
+- **Hooks** — a fresh Chrome per scenario; a PNG screenshot is attached to the report on failure
+- **Tag-based runners** — one runner per suite (`@smoke`, `@regression`, `@sanity`) plus a combined runner
+- **Explicit waits** — `WaitUtils` and `WebDriverWait` for menus and iframe-hosted forms
 
 ---
 
 ## 📁 Project Structure
 
 ```
-openEMR-Automation/
-│
+OpenEMR_Automation/
 ├── src/test/java/
-│   ├── features/              ← BDD feature files (Gherkin syntax)
-│   │   ├── Login.feature
-│   │   ├── PatientManagement.feature
-│   │   ├── Navigation.feature
-│   │   └── FormValidation.feature
-│   ├── steps/                 ← Step definition implementations
+│   ├── base/
+│   │   └── BaseClass.java            ← shared driver setup
+│   ├── pages/                        ← Page Object Model
+│   │   ├── LoginPage.java            ← username, password, language, login
+│   │   ├── PatientPage.java          ← Patient › New/Search, demographics form
+│   │   ├── AdminPage.java            ← Admin menu, logout
+│   │   └── InsurancePage.java        ← insurance entry inside the patient frame
+│   ├── stepdefinitions/
+│   │   ├── Hooks.java                ← @Before / @After, failure screenshots
 │   │   ├── LoginSteps.java
 │   │   ├── PatientSteps.java
-│   │   └── CommonSteps.java
-│   ├── hooks/                 ← Browser setup & teardown
-│   │   └── Hooks.java
-│   └── runner/                ← TestNG runner configuration
-│       └── TestRunner.java
-│
-├── src/main/java/
-│   └── pages/                 ← Page Object Model (POM) classes
-│       ├── LoginPage.java
-│       ├── DashboardPage.java
-│       ├── PatientPage.java
-│       └── NavigationPage.java
-│
-├── pom.xml                    ← Maven dependencies & plugins
-├── testng.xml                 ← TestNG suite configuration
-└── README.md
+│   │   ├── AdminSteps.java
+│   │   └── OpenEMRSteps.java
+│   ├── runners/
+│   │   ├── TestRunner.java           ← @smoke or @regression (default)
+│   │   ├── SmokeRunner.java
+│   │   ├── RegressionRunner.java
+│   │   └── SanityRunner.java
+│   └── utils/
+│       ├── DriverFactory.java
+│       ├── DriverManager.java
+│       └── WaitUtils.java
+├── src/test/resources/features/
+│   ├── login.feature
+│   ├── openemr.feature
+│   ├── patient.feature
+│   └── admin.feature
+├── OpenEMR Cucumber Test Report.pdf  ← latest run, exported from the HTML report
+├── pom.xml
+└── testng.xml
 ```
 
 ---
 
 ## 🎯 Test Coverage
 
-### 🔐 Authentication
-- Valid and invalid login scenario validation
-- Session management and timeout handling
-- Logout verification and redirect confirmation
-- Error message display for incorrect credentials
+<details open>
+<summary><strong>🔐 Authentication</strong></summary>
 
-### 👤 Patient Management
-- Create and add new patient records
-- Search and retrieve patient by name or ID
-- Update existing patient details
-- Data integrity validation after CRUD operations
+<br>
 
-### 🗂️ Navigation & Dashboard
-- Access all application modules — Patients, Calendar, Messages
-- Verify page transitions and navigation workflows
-- Module-specific functionality and element visibility
+- Open the OpenEMR login page, enter credentials, pick the interface language
+- Confirm the dashboard loads after a successful login
+- Log out from the **Admin** menu
 
-### 🧾 Form & Data Handling
-- Input field validation — required, optional, and format checks
-- Dynamic field interaction (dropdowns, date pickers, checkboxes)
-- Error message verification on invalid input submission
+</details>
 
-### ✅ UI Validation
-- Element visibility and state verification
-- Text content assertions and label validation
-- Layout consistency and responsive rendering checks
+<details>
+<summary><strong>👤 Patient Management</strong></summary>
 
----
+<br>
 
-## ✨ Framework Features
+- Navigate **Patient › New/Search** and fill the demographics form (first name, last name, date of birth, sex)
+- Save the record and confirm the patient is created
+- Negative test: leave **First Name** empty and verify the *"First Name is required"* validation message
 
-| Feature | Description |
-|---------|-------------|
-| ✅ BDD with Cucumber | Gherkin syntax for readable, stakeholder-friendly test scenarios |
-| ✅ Page Object Model | Maintainable and scalable code separation by page |
-| ✅ Reusable Step Definitions | Shared steps across feature files to reduce duplication |
-| ✅ TestNG Integration | Flexible test grouping, parallel execution, and XML-based suites |
-| ✅ Maven Build | Automated dependency management with a single `pom.xml` |
-| ✅ Hooks (Before/After) | Clean browser setup and teardown per scenario |
-| ✅ Dynamic Locators | Parameterized locators for flexible and resilient UI interaction |
+</details>
+
+<details>
+<summary><strong>🧾 Insurance (page object ready)</strong></summary>
+
+<br>
+
+- `InsurancePage` adds a provider and policy number inside the patient frame (`pat`); a feature file for it is on the roadmap
+
+</details>
 
 ---
 
-## 📋 Prerequisites
+## ⚙️ Getting Started
 
-Ensure the following are installed before running the tests:
+**Prerequisites:** JDK 11 or newer · Maven 3.8+ · Google Chrome · Git
+No manual ChromeDriver download is needed — WebDriverManager fetches the right version.
 
-- ✅ **JDK 8 or higher** — configured in system PATH
-- ✅ **Maven** — latest stable version
-- ✅ **IDE** — Eclipse or IntelliJ IDEA
-- ✅ **ChromeDriver** — version matching your installed Chrome browser
-- ✅ **Git** — for cloning the repository
-
----
-
-## ⚙️ Installation & Setup
-
-**1. Clone the repository:**
 ```bash
-git clone https://github.com/ranajitchowdhury/openEMR-Automation.git
-cd openEMR-Automation
-```
-
-**2. Install dependencies:**
-```bash
+git clone https://github.com/rbchy/OpenEMR_Automation.git
+cd OpenEMR_Automation
 mvn clean install -DskipTests
-```
-
-**3. Verify ChromeDriver path in `Hooks.java`:**
-```java
-System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
 ```
 
 ---
 
 ## ▶️ Running the Tests
 
-### Option 1 — Maven Command Line
 ```bash
-# Run all tests
+# Default suite: @smoke or @regression (TestRunner)
 mvn clean test
 
-# Run with specific TestNG suite
-mvn test -DsuiteXmlFile=testng.xml
+# One suite by runner
+mvn clean test -Dtest=SmokeRunner
+mvn clean test -Dtest=RegressionRunner
+
+# Any tag expression
+mvn clean test -Dcucumber.filter.tags="@smoke"
 ```
 
-### Option 2 — IDE (Eclipse / IntelliJ)
-1. Right-click `TestRunner.java`
-2. Select **Run As → TestNG Test**
+**From the IDE:** right-click `runners/TestRunner.java` (or `testng.xml`) → **Run As › TestNG Test**.
 
-### Option 3 — Tag-based Execution
-```bash
-# Run only login tests
-mvn test -Dcucumber.filter.tags="@Login"
+**Reports** are written to `target/` after every run:
 
-# Run only smoke tests
-mvn test -Dcucumber.filter.tags="@Smoke"
-```
+| File | Format |
+|---|---|
+| `target/cucumber-report.html` | Cucumber HTML report (with failure screenshots) |
+| `target/cucumber.json` | JSON, for Allure / Jenkins plugins |
+| `target/cucumber.xml` | JUnit XML, for CI test summaries |
+| `target/smoke-report.html`, `regression-report.html`, `sanity-report.html` | Per-suite HTML reports |
 
 ---
 
 ## 🏷️ Tags
 
-| Tag | Description |
-|-----|-------------|
-| `@Smoke` | Critical path — build verification |
-| `@Regression` | Full regression suite |
-| `@Login` | Authentication scenarios |
-| `@Patient` | Patient management flows |
-| `@Navigation` | Dashboard and module navigation |
-| `@Validation` | Form and input validation checks |
-
----
-
-## 🏗️ Framework Architecture
-
-```
-Feature Files (Gherkin)
-        ↓
-Step Definitions (steps/)
-        ↓
-Page Object Model (pages/)
-        ↓
-Selenium WebDriver
-        ↓
-Chrome / Firefox Browser
-        ↓
-OpenEMR Application (demo.openemr.io)
-```
-
-### Design Patterns Applied
-- **Page Object Model (POM)** — locators and actions isolated per page class
-- **BDD (Cucumber)** — Given/When/Then for non-technical stakeholder readability
-- **Factory Pattern** — WebDriver instantiation managed centrally
-- **Hooks** — `@Before` / `@After` for consistent browser lifecycle management
+| Tag | Meaning | Scenarios |
+|---|---|---|
+| `@smoke` | Critical path — build verification | 3 |
+| `@regression` | Negative and end-to-end flows | 2 |
+| `@sanity` | Reserved for quick post-deploy checks | 0 |
 
 ---
 
 ## ⚠️ Healthcare Data Notice
 
-> This framework tests a **demo instance** of OpenEMR. All test data is synthetic and generated for automation purposes only.
+> This framework runs only against the **public OpenEMR demo**, using the demo's published credentials. All test data (for example *John Doe, 1980-01-01*) is synthetic.
 
-- ✅ Use only the demo credentials provided by OpenEMR
-- ✅ Never use real patient information in any test scenario
-- ✅ Respect HIPAA guidelines even in test environments
-- ✅ Focus on UI reliability, secure authentication, and data validation
-
----
-
-## 📈 Roadmap & Future Enhancements
-
-- [ ] Allure Reports — rich HTML reporting with screenshots
-- [ ] CI/CD Integration — Jenkins / GitHub Actions pipeline
-- [ ] Parallel Test Execution — multi-threaded TestNG configuration
-- [ ] Cross-Browser Testing — Firefox, Edge, and Safari support
-- [ ] Data-Driven Testing — Excel / JSON / Database input sources
-- [ ] REST API Testing — REST Assured for backend validation
-- [ ] Database Validation — MySQL query-level assertions
-- [ ] Performance Testing — JMeter integration
+- Never use real patient information in a test scenario
+- Treat even test environments with HIPAA-minded care: no real PHI in data, logs or screenshots
+- The demo is shared and reset regularly; do not rely on records persisting between runs
 
 ---
 
-## 🤝 Contributing
+## 📈 Roadmap
 
-Contributions are welcome!
-
-1. Fork the repository
-2. Create your branch: `git checkout -b feature/improvement`
-3. Commit your changes: `git commit -m 'Add improvement'`
-4. Push to the branch: `git push origin feature/improvement`
-5. Open a Pull Request
+- [ ] Allure reports with step screenshots
+- [ ] GitHub Actions workflow running headless Chrome on every push
+- [ ] Parallel execution (`@DataProvider(parallel = true)`) with a thread-safe driver
+- [ ] Cross-browser: Firefox and Edge
+- [ ] Insurance, appointment scheduling and encounter scenarios
+- [ ] Data-driven patients from JSON / Excel
+- [ ] REST Assured checks against the OpenEMR REST / FHIR API
+- [ ] Credentials moved to a config file / environment variables
 
 ---
 
-## 📄 License
+## 🔗 Related Projects
 
-This project is provided as-is for **educational and professional QA automation** purposes.
+| Project | Stack |
+|---|---|
+| ⭐ [RbcTcsWorld E-Commerce Suite](https://github.com/rbchy/RbcTcsWorld_ECommerceSuite) | Spring Boot · REST Assured · Selenium · Playwright · Appium · CI quality gates |
+| 🧪 [ClinTrial-Connect](https://github.com/rbchy/RbcTcsWorld_ClinTrial-Connect) | Spring Boot · Java (clinical trials) |
+| 🏭 [PPES Pharma Packaging](https://github.com/rbchy/PPES-Pharmaceutical-Packaging-Management) | Java 17 · MySQL 8 |
+| ☁️ [Sauce Labs Cloud Automation](https://github.com/rbchy/QaBrainsSauceLabAPI_Automation) | Selenium · Cucumber · Sauce Labs |
+
+<sub>All projects: [github.com/rbchy](https://github.com/rbchy)</sub>
 
 ---
 
 ## 👤 Author
 
-**Ranajit Baran Chowdhury**
-Software Programmer & QA Automation Engineer
-- 📧 Email: chyranajit@gmail.com
-- 🐙 GitHub: [@ranajitchowdhury](https://github.com/ranajitchowdhury)
+<div align="center">
 
----
+**Ranajit Baran Chowdhury (RB Chowdhury)**
+QA Automation Engineer / SDET · West Norriton, Pennsylvania, USA
 
-**Version:** 1.0.0
-**Last Updated:** May 2026
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rbchy/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
+[![Website](https://img.shields.io/badge/Website-rbchy.github.io%2Frbchy-0d9488?style=for-the-badge&logo=githubpages&logoColor=white)](https://rbchy.github.io/rbchy/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Website-blueviolet?style=for-the-badge&logo=wix&logoColor=white)](https://rbc6543.wixsite.com/rbc-portfolio)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chyranajit@gmail.com)
+
+<sub>Provided for educational and professional QA automation purposes. OpenEMR is © its contributors and licensed under GPL; this repository only tests its public demo.</sub>
+
+⭐ *If this framework helps you, a star on the repo is appreciated.*
+
+</div>
