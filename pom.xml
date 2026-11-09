@@ -21,6 +21,7 @@
         <cucumber.version>7.15.0</cucumber.version>
         <testng.version>7.9.0</testng.version>
         <wdm.version>5.8.0</wdm.version>
+        <headless>false</headless>
     </properties>
 
     <dependencies>
@@ -107,6 +108,9 @@
                     <includes>
                         <include>**/TestRunner.java</include>
                     </includes>
+                    <systemPropertyVariables>
+                        <headless>${headless}</headless>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 

@@ -25,6 +25,12 @@ public class Hooks {
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
+        // Headless for CI: mvn test -Dheadless=true
+        if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+            options.addArguments("--headless=new", "--window-size=1920,1080",
+                    "--no-sandbox", "--disable-dev-shm-usage");
+        }
+
         driver = new ChromeDriver(options);
     }
 
