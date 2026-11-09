@@ -4,11 +4,11 @@
 
 ### BDD UI test framework for the OpenEMR electronic medical record system
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=18&pause=1500&color=FFC107&center=true&vCenter=true&width=900&repeat=true&lines=Java+%C2%B7+Selenium+4+%C2%B7+Cucumber+7+%C2%B7+TestNG+%C2%B7+Maven;Healthcare+QA%3A+login%2C+patient+registration%2C+form+validation%2C+logout;5+%2F+5+scenarios+passing+on+demo.openemr.io)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=18&pause=1500&color=FFC107&center=true&vCenter=true&width=900&repeat=true&lines=Java+%C2%B7+Selenium+4+%C2%B7+Cucumber+7+%C2%B7+TestNG+%C2%B7+Maven;Healthcare+QA%3A+login%2C+patient+registration%2C+form+validation%2C+logout;4+%2F+4+scenarios+passing+in+GitHub+Actions)](https://git.io/typing-svg)
 
 <!-- ============ STATUS BAR ============ -->
-![Status](https://img.shields.io/badge/Status-Stable-0d9488?style=for-the-badge&logo=checkmarx&logoColor=white)
-![Pass Rate](https://img.shields.io/badge/Pass%20Rate-100%25%20(5%2F5)-22c55e?style=for-the-badge)
+[![Tests](https://github.com/rbchy/OpenEMR_Automation/actions/workflows/tests.yml/badge.svg)](https://github.com/rbchy/OpenEMR_Automation/actions/workflows/tests.yml)
+![Pass Rate](https://img.shields.io/badge/Pass%20Rate-100%25%20(4%2F4)-22c55e?style=for-the-badge)
 ![Domain](https://img.shields.io/badge/Domain-Healthcare%20%C2%B7%20EMR-155e75?style=for-the-badge)
 ![Target](https://img.shields.io/badge/Target-demo.openemr.io-1e3a8a?style=for-the-badge&logo=googlechrome&logoColor=white)
 
@@ -46,9 +46,9 @@ A UI automation framework that tests **[OpenEMR](https://www.open-emr.org/)**, t
 | | |
 |---|---|
 | 🎯 **Application** | [demo.openemr.io](https://demo.openemr.io/openemr/interface/login/login.php) |
-| 🧪 **Scenarios** | 5 (3 `@smoke` · 2 `@regression`) |
-| ✅ **Latest run** | 5 / 5 passed · 2 m 22 s |
-| 💻 **Run on** | macOS · OpenJDK 21 · Chrome |
+| 🧪 **Scenarios** | 4 (2 `@smoke` · 2 `@regression`) |
+| ✅ **CI** | 4 / 4 · headless Chrome · every push |
+| 💻 **Local** | macOS · OpenJDK 21 · Chrome |
 | 📄 **Report** | [Cucumber HTML report (PDF)](OpenEMR%20Cucumber%20Test%20Report.pdf) |
 
 </td>
@@ -62,12 +62,11 @@ A UI automation framework that tests **[OpenEMR](https://www.open-emr.org/)**, t
 | Feature | Scenario | Tag | Result |
 |---|---|---|---|
 | 🔐 OpenEMR Login | Successful login (admin user, English language) | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
-| 🔐 OpenEMR Login (`openemr.feature`) | Successful login | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
 | 👤 Patient Management | Add new patient successfully | `@smoke` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
 | 👤 Patient Management | Add patient with missing mandatory fields → *"First Name is required"* | `@regression` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
 | ⚙️ OpenEMR Admin Actions | Logout successfully | `@regression` | ![passed](https://img.shields.io/badge/-passed-22c55e?style=flat-square) |
 
-<sub>Source: the Cucumber report in this repository (cucumber-jvm 7.15.0, OpenJDK 21.0.7, macOS). The demo site is shared and reset regularly, so results depend on its availability.</sub>
+<sub>Every push runs the suite in **GitHub Actions** with headless Chrome ([workflow](.github/workflows/tests.yml)); reports are uploaded as a build artifact. The earlier local run is in the [Cucumber report PDF](OpenEMR%20Cucumber%20Test%20Report.pdf) (it still lists a duplicate login scenario since removed). The demo site is shared and reset regularly, so results depend on its availability.</sub>
 
 ---
 
@@ -138,10 +137,10 @@ OpenEMR_Automation/
 │       └── WaitUtils.java
 ├── src/test/resources/features/
 │   ├── login.feature
-│   ├── openemr.feature
 │   ├── patient.feature
 │   └── admin.feature
 ├── OpenEMR Cucumber Test Report.pdf  ← latest run, exported from the HTML report
+├── .github/workflows/tests.yml       ← headless run on every push
 ├── pom.xml
 └── testng.xml
 ```
@@ -206,6 +205,9 @@ mvn clean test
 mvn clean test -Dtest=SmokeRunner
 mvn clean test -Dtest=RegressionRunner
 
+# Headless (what CI runs)
+mvn clean test -Dheadless=true
+
 # Any tag expression
 mvn clean test -Dcucumber.filter.tags="@smoke"
 ```
@@ -227,7 +229,7 @@ mvn clean test -Dcucumber.filter.tags="@smoke"
 
 | Tag | Meaning | Scenarios |
 |---|---|---|
-| `@smoke` | Critical path — build verification | 3 |
+| `@smoke` | Critical path — build verification | 2 |
 | `@regression` | Negative and end-to-end flows | 2 |
 | `@sanity` | Reserved for quick post-deploy checks | 0 |
 
@@ -246,7 +248,7 @@ mvn clean test -Dcucumber.filter.tags="@smoke"
 ## 📈 Roadmap
 
 - [ ] Allure reports with step screenshots
-- [ ] GitHub Actions workflow running headless Chrome on every push
+- [x] GitHub Actions workflow running headless Chrome on every push
 - [ ] Parallel execution (`@DataProvider(parallel = true)`) with a thread-safe driver
 - [ ] Cross-browser: Firefox and Edge
 - [ ] Insurance, appointment scheduling and encounter scenarios
